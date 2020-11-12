@@ -1,4 +1,8 @@
-.admission-page {
-    margin : 20%;
+.admission-pg-title {
+    margin: 5%
+}
+.admission-pg-content {
+    margin : 5% 20%;
+    padding: 5% 10%;
     
 }
