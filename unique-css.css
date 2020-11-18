@@ -1,4 +1,145 @@
-.admission-page {
-    margin : 20%;
-    
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Manrope', sans-serif;
+}
+body {
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    margin: 0;
+    padding: 0;
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+}
+
+.form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 480px;
+    height: 370px;
+    background: white;
+    border-radius: 5%;
+}
+
+.form .head {
+    width: 100%;
+    height: 55px;
+    display: flex;
+}
+
+.form .head > div {
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    font-size: 22px;
+    line-height: 55px;
+    cursor: pointer;
+    background: transparent;
+}
+
+.form .head .signup > div:nth-child(1),.form .head > div:nth-child(2) {
+    background: rgb(175, 175, 175);
+    transition: all .3s ease-in-out;
+    border-top-right-radius: 20px;
+}
+
+.form .head .signup > div:nth-child(2) {
+    background: transparent !important;
+    transition: all .3s ease-in-out;
+}
+
+.form .body {
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+.form .body > div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: all .3s ease-in-out;
+}
+
+.form .body .form-row {
+    border-top: 1px solid rgb(189, 187, 187);
+}
+
+.form .body .form-row input {
+    width: 50%;
+    height: 25px;
+    margin: 0;
+    margin-top: 50px;
+    margin-left: 25%;
+    border-bottom-color: #ccc;
+    border-right-style: none;
+    border-left-style: none;
+    border-top-style: none;
+    text-rendering: auto;
+    margin-bottom: 10px;
+    outline: none;
+
+}
+
+.form .body .login .form-row button {
+    width: 40%;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    margin-left: 30%;
+    margin-top: 50px;
+    height: 45px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.form .body .signup .form-row button {
+    width: 40%;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    margin-left: 30%;
+    margin-top: 30px;
+    height: 45px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.form .body > div.login {
+    left: 0%;
+}
+
+.form .body > div.signup {
+    left: 100%;
+}
+
+.form .body.active > div.login {
+    left: -100%;
+}
+.form .body.active > div.signup {
+    left: 0%;
+}
+
+.signup .form-row input[type="email"] {
+    outline: none;
+}
+
+.signup .form-row input[type="Password"] {
+    outline: none;
+    margin-top: 5%;
+}
+
+.signup .form-row input[type="ConfirmPassword"] {
+    outline: none;
+    margin-top: 5%;
 }
