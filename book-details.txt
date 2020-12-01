@@ -1,0 +1,407 @@
+<--------- Fiction ------------->
+Title : To Kill A Mocking Bird
+Description : A novel by Harper Lee published in 1960. Instantly successful, widely read in high schools and middle schools in the United States, it has become a classic of modern American literature, winning the Pulitzer Prize.
+Author : Harper Lee
+Rating
+Genre : Fiction
+Price : 6.80
+Publisher : J. B. Lippincott & Co.
+
+Title : The One and Only Ivan
+Description : This unforgettable novel from renowned author Katherine Applegate celebrates the transformative power of unexpected friendship. Inspired by the true story of a captive gorilla known as Ivan, this illustrated book is told from the point of view of Ivan himself.
+Author : Katherine Applegate
+Rating :
+Genre : Fiction
+Price : 6.96
+Publisher : HarperCollins
+
+Title : The Last Kids on Earth and the Skeleton Road
+Description : Jack Sullivan, Quint Baker, June Del Toro, and Dirk Savage are about to have their biggest adventure yet. That's right--it's ROAD TRIP TIME!
+Author : Max Brallier 
+Rating :
+Genre : Fiction
+Price : 11.18
+Publisher : Amazon
+
+Title : Restart
+Description : The amazing New York Times bestseller about what you can do when life gives you a second chance.
+Author : Gordon Korman 
+Rating :
+Genre :
+Price : 5.59
+Publisher : Scholastic, Inc.
+
+Title : I Am Watching You
+Description : When Ella Longfield overhears two attractive young men flirting with teenage girls on a train, she thinks nothing of it—until she realises they are fresh out of prison and her maternal instinct is put on high alert. But just as she’s decided to call for help, something stops her. The next day, she wakes up to the news that one of the girls—beautiful, green-eyed Anna Ballard—has disappeared.
+Author : Teresa Driscoll 
+Rating :
+Genre : Fiction
+Price : 7.63
+Publisher : Amazon
+
+Title : Where the Forest Meets the Stars
+Description : An Amazon Charts, Wall Street Journal, and Washington Post bestseller, and a Goodreads Choice Award finalist. In this gorgeously stunning debut, a mysterious child teaches two strangers how to love and trust again.
+Author : Glendy Vanderah
+Rating :
+Genre : Fiction
+Price : 4.99
+Publisher : Amazon
+
+Title : Hangman
+Description : He wasn't always the Hangman. But somebody always wanted him dead.
+Author : Jack Slater
+Rating :
+Genre : Fiction
+Price : 5.29
+Publisher : Amazon
+
+Title : The Nothing Man
+Description : At the age of twelve, Eve Black was the only member of her family to survive an encounter with serial attacker the Nothing Man. Now an adult, she is obsessed with identifying the man who destroyed her life.
+Author : Catherine Ryan Howard
+Rating :
+Genre : Fiction
+Price : 19.79
+Publisher : Dental & Co.
+
+Title : The Hideway
+Description : In the South, family is always more complicated than it seems.
+Author : Lauren K. Denton
+Rating :
+Genre : Fiction
+Price : 14.99
+Publisher : Dental & Co.
+
+Title : 'Til Death Do Us Part
+Description : A stalker targets a widowed librarian in Charleston SC. This first novel looks at every woman's worst fear: feeling unsafe wherever she goes. He delights in worrying her with texts, emails, and phone calls at home and at work. 
+Author : Austen Butler 
+Rating : 
+Genre : Fiction
+Price : 9.45
+Publisher : Dental & Co.
+
+<-------- Nonfiction ------------->
+Title : The Splendid and the Vile: A Saga of Churchill, Family, and Defiance During the Blitz
+Description : he author of The Devil in the White City and Dead Wake delivers an intimate chronicle of Winston Churchill and London during the Blitz—an inspiring portrait of courage and leadership in a time of unprecedented crisis
+Author : Erik Larson
+Rating :
+Genre : Nonfiction
+Price : 14.98
+Publisher : Crown Publishing Group
+
+Title : Into the Abyss: An Extraordinary True Story
+Description : The "gripping and emotionally affecting" book where four men survived the plane crash. 
+Author : Carol Shaben 
+Rating :
+Genre : Nonfiction
+Price : 15.29
+Publisher : Penguin Random House LLC.
+
+Title : The Spy and the Traitor: The Greatest Espionage Story of the Cold War
+Description : The celebrated author of Double Cross and Rogue Heroes returns with his greatest spy story yet, a thrilling Americans-era tale of Oleg Gordievsky, the Russian whose secret work helped hasten the end of the Cold War.
+Author : Ben Macintyre
+Rating :
+Genre : Nonfiction
+Price : 14.89
+Publisher : Crown Publishing Group
+
+Title : The Last Castle: The Epic Story of Love, Loss, and American Royalty in the Nation's Largest Home
+Description : A New York Times bestseller with an "engaging narrative and array of detail” (The Wall Street Journal), the “intimate and sweeping” (Raleigh News & Observer) untold, true story behind the Biltmore Estate—the largest, grandest private residence in North America,
+Author : Denise Kiernan
+Rating :
+Genre : Nonfiction
+Price : 10.74
+Publisher : Atria Books
+
+Title : A Woman of No Importance: The Untold Story of the American Spy Who Helped Win World War II
+Description : Chosen as a BEST BOOK OF THE YEAR by NPR, the New York Public Library, Amazon, the Seattle Times, the Washington Independent Review of Books, PopSugar, the Minneapolis Star Tribune, BookBrowse, the Spectator, and the Times of London
+Author : Sonia Purnell
+Rating :
+Genre : Nonfiction
+Price : 16.20
+Publisher : Penguin Random House LLC.
+
+Title : The Office: The Untold Story of the Greatest Sitcom of the 2000s: An Oral History
+Description : The untold stories behind The Office, one of the most iconic television shows of the twenty-first century, told by its creators, writers, and actors
+Author : Andy Greene
+Rating :
+Genre : Nonfiction
+Price : 14.10
+Publisher :  Penguin Audio
+
+Title : Clanlands: Whisky, Warfare, and a Scottish Adventure Like No Other
+Description : A road trip book with a difference. Stars of Outlander - Sam Heughan & Graham McTavish - explore Scotland, a land of raw beauty, poetry, feuding, music, history, and warfare.
+Author : Sam Heughan
+Rating :
+Genre : Nonfiction
+Price : 21.59
+Publisher : Hodder & Stoughton
+
+Title : Interesting Stories For Curious People
+Description : Want to impress your buddies at the bar? Need to think of something interesting to do at the next family gathering?
+Author : Bill O'Neill
+Rating :
+Genre : Nonfiction
+Price : 11.90
+Publisher : LAK Publishing
+
+Title : Salt: A World History
+Description : An unlikely world history from the bestselling author of Cod and The Basque History of the World
+Author : Mark Kurlansky
+Rating :
+Genre : Nonfiction
+Price : 13.73
+Publisher : Penguin Books
+
+Title : Case Closed?: Nine Mysteries Unlocked by Modern Science
+Description : Egypt's first female pharaoh disappears around 1457 BCE --- was she murdered? Find out how DNA closes the case. 
+Author : Susan Hughes
+Rating :
+Genre : Nonfiction
+Price : 12.95
+Publisher : Kids Can Press Ltd
+
+<---------  Syfy ------------>
+Title : Exodus (Forgotten Starship Book 1) 
+Description : In the year 2050, Earth makes first contact. By 2052, the war is over. We lose.
+Author : M.R. Forbes
+Rating :
+Genre : Syfy
+Price : 18.99
+Publisher : Amazon
+
+Title : The Project (The Project Series Book 1)
+Description : magine if only one conspiracy theory was true—the conspiracy to make money.
+Author : 	
+Johnny Moscato
+Rating :
+Genre : Syfy
+Price : 11.99
+Publisher : Dentist & CO.
+
+Title : Seattle Quake 9.2
+Description : They knew it could happen - scientists had been warning them for years. Yet, nearly two million people living in the greater Seattle area went about their daily lives as usual.
+Author : Marti Talbott
+Rating :
+Genre : Syfy
+Price : 14.96
+Publisher : CreateSpace Independent Publishing Platform
+
+Title : Nana
+Description : Missing for her daughter's entire life, Grace now wants to be called "Nana." And that's not all she wants . . .
+Author : Brandon Massey
+Rating :
+Genre : Syfy
+Price : 14.99
+Publisher : Amazon
+
+Title : The Histories of Mighty Farallon
+Description : Much of civilization is destroyed by a major seismic cataclysm, leaving crews working on the moon with no way to communicate with their earthbound partners and advisers.
+Author : Frederick Stackchaine
+Rating :
+Genre : Syfy
+Price : 13.99
+Publisher : Amazon
+
+Title : The Founding: A Gaunt's Ghosts Omnibus
+Description : New edition of the first Gaunt's Ghosts omnibus, containing the opening story arc in the series, comprising the novels First and Only, Ghostmaker and Necropolis.
+Author : Dan Abnett
+Rating :
+Genre : Syfy
+Price : 19.37
+Publisher : Games Workshop
+
+Title : Star Fire 
+Description : New from million-copy bestseller M.R. Forbes. One man's epic story of loyalty, perseverance, and hope in a galaxy at war.
+Author : M.R. Forbe
+Rating :
+Genre : Syfy
+Price : 15.99
+Publisher : Amazon
+
+Title : Winter World (The Long Winter Trilogy Book 1)
+Description : A new ice age... and a shocking discovery... will change humanity forever.
+Author : A.G. Riddle
+Rating :
+Genre : Syfy
+Price : 10.99
+Publisher :  Legion Books
+
+Title : These Times of Abandon: A Post-Apocalyptic EMP Survivor Thriller
+Description : From the USA Today bestselling author of The Last War, The Age of Embers, and Dark Days of the After comes a BRAND NEW post-apocalyptic survival saga, The Abandon Series. 
+Author : Ryan Schow
+Rating :
+Genre : Syfy
+Price : 13.99
+Publisher : River City Publishing
+
+Title : One of Many in the Universe
+Description : One of Many in the Universe refers to the planet Earth being one of many planets bearing intelligent life. This story begins with the first planet ever to have intelligent life, its inhabitants never suffering any aggression in any era of its evolution through armed conflict or crime. 
+Author : Isaiah Rochon 
+Rating :
+Genre : Syfy
+Price : 17.54
+Publisher : Page Publishing, Inc
+
+<--------- Biography ------------>
+Title : Right Place, Right Time: The Life of a Rock & Roll Photographer
+Description : An action-packed memoir that takes readers on the road with rock and roll’s hardest-working photographer
+Author : Bob Gruen
+Rating :
+Genre : Biography
+Price : 21.47
+Publisher : Harry N. Abrams 
+
+Title : Eleanor
+Description : Prizewinning bestselling author David Michaelis presents a “stunning” (The Wall Street Journal) breakthrough portrait of Eleanor Roosevelt, America’s longest-serving First Lady, an avatar of democracy whose ever-expanding agency as diplomat, activist, and humanitarian made her one of the world’s most widely admired and influential women.
+Author : David Michaelis
+Rating :
+Genre : Biography
+Price : 21.19
+Publisher : Simon & Schuster
+
+Title : Cary Grant: A Brilliant Disguise
+Description : Film historian and acclaimed New York Times bestselling biographer Scott Eyman has written the definitive, “captivating” (Associated Press) biography of Hollywood legend Cary Grant, one of the most accomplished—and beloved—actors of his generation, who remains as popular as ever today.
+Author : Scott Eyman
+Rating :
+Genre : Biography
+Price : 16.99
+Publisher : Simon & Schuster
+
+Title : The Man Who Ran Washington: The Life and Times of James A. Baker III
+Description : From two of America's most revered political journalists comes the definitive biography of legendary White House chief of staff and secretary of state James A. Baker III: the man who ran Washington when Washington ran the world.
+Author : Peter Baker 
+Rating :
+Genre : Biography
+Price : 24.99
+Publisher : Doubleday
+
+Title : The Pale-Faced Lie: A True Story 
+Description : Spur Award Winner for Best Western First Nonfiction Book • Spur Award Finalist for Best Western Contemporary Nonfiction • IPPY Silver Award for Best Memoir • Next Generation Indie Award for Best Memoir (Overcoming Adversity) • International Book Award for Best True Crime • Readers’ Favorite Gold Medal, Nonfiction Drama
+Author : David Crow
+Rating :
+Genre : Biography
+Price : 18.76
+Publisher : Sandra Jonas Publishing House
+
+Title : The Splendid and the Vile: A Saga of Churchill, Family, and Defiance During the Blitz
+Description : The author of The Devil in the White City and Dead Wake delivers an intimate chronicle of Winston Churchill and London during the Blitz—an inspiring portrait of courage and leadership in a time of unprecedented crisis
+Author : Erik Larson
+Rating :
+Genre : Biography
+Price : 13.98
+Publisher : Crown
+
+Title : The Search for John Lennon: The Life, Loves, and Death of a Rock Star 
+Description : Pulling back the many hidden layers of John Lennon’s life, Lesley-Ann Jones closely tracks the events and personality traits that led to the rock star living in self-imposed exile in New York—where he was shot dead outside his apartment on that fateful autumn day forty years ago.
+Author : Lesley-Ann Jones
+Rating :
+Genre : Biography
+Price : 28.95
+Publisher : Pegasus Books
+
+Title : Alexander Hamilton 
+Description : Pulitzer Prize-winning author Ron Chernow presents a landmark biography of Alexander Hamilton, the Founding Father who galvanized, inspired, scandalized, and shaped the newborn nation.
+Author : Ron Chernow
+Rating :
+Genre : Biography
+Price : 12.99
+Publisher : Penguin Group
+
+Title : What Becomes a Legend Most: A Biography of Richard Avedon
+Description : The first definitive biography of Richard Avedon, a monumental photographer of the twentieth century, from award-winning photography critic Philip Gefter.
+Author : Philip Gefter
+Rating :
+Genre : Biography
+Price : 32.00
+Publisher : HarperCollins Publishers
+
+Title : FERRY PILOT: Nine Lives Over the North Atlantic
+Description : What could possibly go wrong? A LOT, if you spend 30 years flying small airplanes over the North Atlantic!
+Author : Kerry McCauley
+Rating :
+Genre : Biography
+Price : 14.99
+Publisher : Amazon Digital Services LLC
+
+<----------- Mystery ------------>
+Title : Cold Silence: A Chilling Psychological Thriller
+Description : A widow and ex-FBI agent of hard-earned courage, Cody O'Brien is finally enjoying the quiet life, providing a good home for herself and her eight-year-old son, Ryan.
+Author : Danielle Girard
+Rating :
+Genre : Mystery
+Price : 14.39
+Publisher : Amazon
+
+Title : Moonflower Murders: A Novel 
+Description : Featuring his famous literary detective Atticus Pund and Susan Ryeland, hero of the worldwide bestseller Magpie Murders, a brilliantly complex literary thriller with echoes of Agatha Christie from New York Times bestselling author Anthony Horowitz.
+Author : Anthony Horowitz 
+Rating :
+Genre : Mystery
+Price : 18.97
+Publisher : Penguin & Co.
+
+Title : The Beautiful Mystery: A Chief Inspector Gamache Novel
+Description : The brilliant new novel in the New York Times bestselling series by Louise Penny, one of the most acclaimed crime writers of our time
+Author : Louise Penny
+Rating :
+Genre : Mystery
+Price : 13.39
+Publisher : St. Martin''s Publishing Group
+
+Title : Cellini's Revenge: The Mystery of the Silver Cups
+Description : Cellini’s Revenge is the story of an American woman, Catherine Evans, falsely accused (but eventually convicted) of her husband David’s murder. 
+Author : Wendy Bartlett
+Rating :
+Genre : Mystery
+Price : 14.95
+Publisher : iUniverse
+
+Title : The Mystery of Charles Dickens
+Description : A lively and insightful biographical celebration of the imaginative genius of Charles Dickens, published in commemoration of the 150th anniversary of his death.
+Author : A.N. Wilson
+Rating :
+Genre : Mystery
+Price : 23.67
+Publisher : HarperCollins B and Blackstone Publishing
+
+Title : Then She Was Gone: A Novel
+Description : From the New York Times bestselling author of Invisible Girl and The Truth About Melody Browne comes a “riveting” (PopSugar) and “acutely observed family drama” (People) that delves into the lingering aftermath of a young girl’s disappearance.
+Author : Lisa Jewel
+Rating :
+Genre : Mystery
+Price : 8.63
+Publisher : Atria Books
+
+Title : The Skeletons of Birkbury: A rural detective mystery
+Description : One buried body. Many hidden secrets.
+Author : Diana J Febry
+Rating :
+Genre : Mystery
+Price : 8.76
+Publisher : Amazon
+
+Title : The Housekeeper: A Twisted Psychological Thriller 
+Description : When Claire sees Hannah Wilson at an exclusive Manhattan hair salon, it's like a knife slicing through barely healed scars. It may have been 10 years since Claire last saw Hannah, but she has thought of her every day, and not in a good way. So Claire does what anyone would do in her position - she stalks her. 
+Author : Natalie Barelli 
+Rating :
+Genre : Mystery
+Price : 10.40
+Publisher : Furphies Press
+
+Title : Holmes on the Range: A Mystery
+Description : It's 1893, and itinerant cowboy brothers Big Red and Old Red Amlingmeyer are down to their last pennies.
+Author : Steve Hockensmith
+Rating :
+Genre : Mystery
+Price : 14.95
+Publisher : Penguin & Co.
+
+Title : Any Witch Way You Can 
+Description : Bay Winchester is having a tough week. As the local editor of Hemlock Cove's only newspaper, she just happens to be present when a body is found in an area corn maze. To make matters worse, the police believe the murder may have something to do with the occult.
+Author : 	
+Amanda M. Lee
+Rating :
+Genre : Mystery
+Price : 13.99
+Publisher : Amazon
+
