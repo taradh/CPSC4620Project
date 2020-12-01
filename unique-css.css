@@ -16,6 +16,27 @@ body {
     font-size: 14px;
 }
 
+p {
+  color : #000000;
+}
+
+.index-header {
+
+    padding: 5%;
+}
+
+.carousel {
+  margin-bottom: 4rem;
+}
+
+.carousel-item {
+  height : 32rem;
+}
+
+.carousel-caption {
+  bottom: 4rem;
+}
+
 .form {
     position: absolute;
     top: 50%;
