@@ -19,6 +19,12 @@
       exit();
   }
 
+  // make sure password has one capital letter
+  if (!preg_match('/[A-Z]/', $password)) {
+    header("Location: ../login.php?invalid_password");
+    exit();   
+  }
+
   // check if entered passwords match
   if ($confirm_password !== $password) {
     header("Location: ../login.php?confirmpassword=wrong");

@@ -71,6 +71,9 @@
         elseif (strpos($fullUrl2, "user_already_exists") == true) {
           echo "<p class='error'>User already has an account!</p>";
         }
+        elseif (strpos($fullUrl2, "invalid_password") == true) {
+          echo "<p class='error'>Password needs at least 1 capital letter!</p>";
+        }
 
         ?>
       </div>

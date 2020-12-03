@@ -12,11 +12,14 @@
     $sql_query = "SELECT password FROM Users WHERE email='$email';";
     $result = mysqli_query($conn, $sql_query);
     $resultCheck = mysqli_num_rows($result);
+    $user = substr($email, 0, 8);
 
     if ($resultCheck > 0) {
       while ($row = mysqli_fetch_assoc($result)) {
         if (password_verify($password, $row['password'])) {
-          header("Location: ../home.php");
+          $location = "Location: ../home.php?";
+          $header_uri = $location.$user;
+          header($header_uri);
           exit();
         }
         else {

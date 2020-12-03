@@ -13,8 +13,102 @@
     <title>Library Management System</title>
   </head>
   <body>
+    <?php
+
+    $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    $current_user = parse_url($fullUrl, PHP_URL_QUERY);
+
+    // connect to db
+    $conn = mysqli_connect('database-1-4620.c9fxeyiderap.us-east-1.rds.amazonaws.com','admin','database','' ) or die('Error connecting to MySQL server.');
+
+    // select database
+    mysqli_select_db($conn, "librarymanagementsystem");
+
+    // Fiction books and info
+    $fiction_query = "SELECT title, author, price, rating, book_image FROM Books WHERE genre='Fiction' LIMIT 9";
+    $fiction_result = mysqli_query($conn, $fiction_query);
+    $fiction_resultCheck = mysqli_num_rows($fiction_result);
+    $fiction_data = array();
+
+    if ($fiction_resultCheck > 0) {
+      // grab info
+      while ($row = mysqli_fetch_assoc($fiction_result)) {
+        array_push($fiction_data, $row);
+      }
+    }
+    else {
+      printf("Error is %s.\n", mysqli_error($conn));
+    }
+
+    // Nonfiction books and info
+    $nonfic_query = "SELECT title, author, price, rating, book_image FROM Books WHERE genre='Nonfiction' LIMIT 9";
+    $nonfic_result = mysqli_query($conn, $nonfic_query);
+    $nonfic_resultCheck = mysqli_num_rows($nonfic_result);
+    $nonfic_data = array();
+
+    if ($nonfic_resultCheck > 0) {
+      // grab info
+      while ($row = mysqli_fetch_assoc($nonfic_result)) {
+        array_push($nonfic_data, $row);
+      }
+    }
+    else {
+      printf("Error is %s.\n", mysqli_error($conn));
+    }
+
+    // Syfy books and info
+    $syfy_query = "SELECT title, author, price, rating, book_image FROM Books WHERE genre='Syfy' LIMIT 9";
+    $syfy_result = mysqli_query($conn, $syfy_query);
+    $syfy_resultCheck = mysqli_num_rows($syfy_result);
+    $syfy_data = array();
+
+    if ($syfy_resultCheck > 0) {
+      // grab info
+      while ($row = mysqli_fetch_assoc($syfy_result)) {
+        array_push($syfy_data, $row);
+      }
+    }
+    else {
+      printf("Error is %s.\n", mysqli_error($conn));
+    }
+
+    // Biography books and info
+    $bio_query = "SELECT title, author, price, rating, book_image FROM Books WHERE genre='Biography' LIMIT 9";
+    $bio_result = mysqli_query($conn, $bio_query);
+    $bio_resultCheck = mysqli_num_rows($bio_result);
+    $bio_data = array();
+
+    if ($bio_resultCheck > 0) {
+      // grab info
+      while ($row = mysqli_fetch_assoc($bio_result)) {
+        array_push($bio_data, $row);
+      }
+    }
+    else {
+      printf("Error is %s.\n", mysqli_error($conn));
+    }
+
+    // Mystery books and info
+    $myst_query = "SELECT title, author, price, rating, book_image FROM Books WHERE genre='Mystery' LIMIT 9";
+    $myst_result = mysqli_query($conn, $myst_query);
+    $myst_resultCheck = mysqli_num_rows($myst_result);
+    $myst_data = array();
+
+    if ($myst_resultCheck > 0) {
+      // grab info
+      while ($row = mysqli_fetch_assoc($myst_result)) {
+        array_push($myst_data, $row);
+      }
+    }
+    else {
+      printf("Error is %s.\n", mysqli_error($conn));
+    }
+
+
+    ?>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
       <h1 class="navbar-brand" " href="#">T. C. Library</h1>
+      <h1 class="navbar-brand" href="#" style="text-align: center; font-style: bold">Hello, <?php echo $current_user ?></h1>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -41,6 +135,8 @@
     <header class="index-header">
       <br>
       <h1 style="text-align: center">Welcome to<br>T. C. Library</h1>
+      <h2 class="Recommended" style="text-align: center">Our Top Must Reads</h2>
+
 
     </header>
 <main>
@@ -59,34 +155,34 @@
             <div class="row">
               <div class="col-md-4">
                 <div class="card mb-4 box-shadow">
-                  <img class="card-img-top" data-src="pictures\fiction\tkamb.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block" src="pictures\fiction\tkamb.jpg">
+                  <img class="card-img-top" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block" src=<?php echo $fiction_data[0]['book_image']?>>
                   <div class="card-body">
-                    <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                    <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                    <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                    <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                    <p class="card-text" style="text-align:left;"><b>Title:<?php echo $fiction_data[0]['title'];?></b></p>
+                    <p class="card-text" style="text-align:left;"><b>Author:<?php echo $fiction_data[0]['author'];?></b></p>
+                    <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $fiction_data[0]['price'];?></b></p>
+                    <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $fiction_data[0]['rating'];?></b></p>
                   </div>
                 </div>
               </div><!--End of col-md-4-->
               <div class="col-md-4">
                 <div class="card mb-4 box-shadow">
-                  <img class="card-img-top" data-src="pictures\fiction\toaoi.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src="pictures\fiction\toaoi.jpg">
+                  <img class="card-img-top" data-src="pictures\fiction\toaoi.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src=<?php echo $fiction_data[1]['book_image']?>>
                   <div class="card-body">
-                    <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                    <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                    <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                    <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                    <p class="card-text" style="text-align:left;"><b>Title:<?php echo $fiction_data[1]['title'];?></b></p>
+                    <p class="card-text" style="text-align:left;"><b>Author:<?php echo $fiction_data[1]['author'];?></b></p>
+                    <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $fiction_data[1]['price'];?></b></p>
+                    <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $fiction_data[1]['rating'];?></b></p>
                   </div>
                 </div>
               </div><!--End of col-md-4-->
               <div class="col-md-4">
                 <div class="card mb-4 box-shadow">
-                  <img class="card-img-top" data-src="pictures\fiction\tlkoe.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src="pictures\fiction\tlkoe.jpg">
+                  <img class="card-img-top" data-src="pictures\fiction\tlkoe.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src=<?php echo $fiction_data[2]['book_image']?>>
                   <div class="card-body">
-                    <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                    <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                    <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                    <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                    <p class="card-text" style="text-align:left;"><b>Title:<?php echo $fiction_data[2]['title'];?></b></p>
+                    <p class="card-text" style="text-align:left;"><b>Author:<?php echo $fiction_data[2]['author'];?></b></p>
+                    <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $fiction_data[2]['price'];?></b></p>
+                    <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $fiction_data[2]['rating'];?></b></p>
                   </div>
                 </div>
               </div><!--End of col-md-4-->
@@ -100,34 +196,34 @@
             <div class="row">
               <div class="col-md-4">
                 <div class="card mb-4 box-shadow">
-                  <img class="card-img-top" data-src="pictures\fiction\tkamb.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block" src="pictures\fiction\">
+                  <img class="card-img-top" data-src="pictures\fiction\tkamb.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block" src=<?php echo $fiction_data[3]['book_image']?>>
                   <div class="card-body">
-                    <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                    <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                    <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                    <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                    <p class="card-text" style="text-align:left;"><b>Title:<?php echo $fiction_data[3]['title'];?></b></p>
+                    <p class="card-text" style="text-align:left;"><b>Author:<?php echo $fiction_data[3]['author'];?></b></p>
+                    <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $fiction_data[3]['price'];?></b></p>
+                    <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $fiction_data[3]['rating'];?></b></p>
                   </div>
                 </div>
               </div><!--End of col-md-4-->
               <div class="col-md-4">
                 <div class="card mb-4 box-shadow">
-                  <img class="card-img-top" data-src="pictures\fiction\toaoi.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src="pictures\fiction\">
+                  <img class="card-img-top" data-src="pictures\fiction\toaoi.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src=<?php echo $fiction_data[4]['book_image']?>>
                   <div class="card-body">
-                    <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                    <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                    <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                    <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                    <p class="card-text" style="text-align:left;"><b>Title:<?php echo $fiction_data[4]['title'];?></b></p>
+                    <p class="card-text" style="text-align:left;"><b>Author:<?php echo $fiction_data[4]['author'];?></b></p>
+                    <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $fiction_data[4]['price'];?></b></p>
+                    <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $fiction_data[4]['rating'];?></b></p>
                   </div>
                 </div>
               </div><!--End of col-md-4-->
               <div class="col-md-4">
                 <div class="card mb-4 box-shadow">
-                  <img class="card-img-top" data-src="pictures\fiction\tlkoe.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src="pictures\fiction\">
+                  <img class="card-img-top" data-src="pictures\fiction\tlkoe.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src=<?php echo $fiction_data[5]['book_image']?>>
                   <div class="card-body">
-                    <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                    <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                    <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                    <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                    <p class="card-text" style="text-align:left;"><b>Title:<?php echo $fiction_data[5]['title'];?></b></p>
+                    <p class="card-text" style="text-align:left;"><b>Author:<?php echo $fiction_data[5]['author'];?></b></p>
+                    <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $fiction_data[5]['price'];?></b></p>
+                    <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $fiction_data[5]['rating'];?></b></p>
                   </div>
                 </div>
               </div><!--End of col-md-4-->
@@ -141,34 +237,34 @@
             <div class="row">
               <div class="col-md-4">
                 <div class="card mb-4 box-shadow">
-                  <img class="card-img-top" data-src="pictures\fiction\tkamb.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block" src="pictures\fiction\">
+                  <img class="card-img-top" data-src="pictures\fiction\tkamb.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block" src=<?php echo $fiction_data[6]['book_image']?>>
                   <div class="card-body">
-                    <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                    <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                    <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                    <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                    <p class="card-text" style="text-align:left;"><b>Title:<?php echo $fiction_data[6]['title'];?></b></p>
+                    <p class="card-text" style="text-align:left;"><b>Author:<?php echo $fiction_data[6]['author'];?></b></p>
+                    <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $fiction_data[6]['price'];?></b></p>
+                    <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $fiction_data[6]['rating'];?></b></p>
                   </div>
                 </div>
               </div><!--End of col-md-4-->
               <div class="col-md-4">
                 <div class="card mb-4 box-shadow">
-                  <img class="card-img-top" data-src="pictures\fiction\toaoi.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src="pictures\fiction\">
+                  <img class="card-img-top" data-src="pictures\fiction\toaoi.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src=<?php echo $fiction_data[7]['book_image']?>>
                   <div class="card-body">
-                    <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                    <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                    <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                    <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                    <p class="card-text" style="text-align:left;"><b>Title:<?php echo $fiction_data[7]['title'];?></b></p>
+                    <p class="card-text" style="text-align:left;"><b>Author:<?php echo $fiction_data[7]['author'];?></b></p>
+                    <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $fiction_data[7]['price'];?></b></p>
+                    <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $fiction_data[7]['rating'];?></b></p>
                   </div>
                 </div>
               </div><!--End of col-md-4-->
               <div class="col-md-4">
                 <div class="card mb-4 box-shadow">
-                  <img class="card-img-top" data-src="pictures\fiction\tlkoe.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src="pictures\fiction\">
+                  <img class="card-img-top" data-src="pictures\fiction\tlkoe.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src=<?php echo $fiction_data[8]['book_image']?>>
                   <div class="card-body">
-                    <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                    <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                    <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                    <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                    <p class="card-text" style="text-align:left;"><b>Title:<?php echo $fiction_data[8]['title'];?></b></p>
+                    <p class="card-text" style="text-align:left;"><b>Author:<?php echo $fiction_data[8]['author'];?></b></p>
+                    <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $fiction_data[8]['price'];?></b></p>
+                    <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $fiction_data[8]['rating'];?></b></p>
                   </div>
                 </div>
               </div><!--End of col-md-4-->
@@ -205,34 +301,34 @@
           <div class="row">
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="pictures\fiction\tkamb.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block" src="pictures\fiction\">
+                <img class="card-img-top" data-src="pictures\fiction\tkamb.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block" src=<?php echo $nonfic_data[0]['book_image']?>>
                 <div class="card-body">
-                  <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                  <p class="card-text" style="text-align:left;"><b>Title:<?php echo $nonfic_data[0]['title'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Author:<?php echo $nonfic_data[0]['author'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $nonfic_data[0]['price'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $nonfic_data[0]['rating'];?></b></p>
                 </div>
               </div>
             </div><!--End of col-md-4-->
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="pictures\fiction\toaoi.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src="pictures\fiction\">
+                <img class="card-img-top" data-src="pictures\fiction\toaoi.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src=<?php echo $nonfic_data[1]['book_image']?>>
                 <div class="card-body">
-                  <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                  <p class="card-text" style="text-align:left;"><b>Title:<?php echo $nonfic_data[1]['title'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Author:<?php echo $nonfic_data[1]['author'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $nonfic_data[1]['price'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $nonfic_data[1]['rating'];?></b></p>
                 </div>
               </div>
             </div><!--End of col-md-4-->
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="pictures\fiction\tlkoe.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src="pictures\fiction\">
+                <img class="card-img-top" data-src="pictures\fiction\tlkoe.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src=<?php echo $nonfic_data[2]['book_image']?>>
                 <div class="card-body">
-                  <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                  <p class="card-text" style="text-align:left;"><b>Title:<?php echo $nonfic_data[2]['title'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Author:<?php echo $nonfic_data[2]['author'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $nonfic_data[2]['price'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $nonfic_data[2]['rating'];?></b></p>
                 </div>
               </div>
             </div><!--End of col-md-4-->
@@ -246,34 +342,34 @@
           <div class="row">
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="pictures\fiction\tkamb.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block" src="pictures\fiction\">
+                <img class="card-img-top" data-src="pictures\fiction\tkamb.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block" src=<?php echo $nonfic_data[3]['book_image']?>>
                 <div class="card-body">
-                  <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                  <p class="card-text" style="text-align:left;"><b>Title:<?php echo $nonfic_data[3]['title'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Author:<?php echo $nonfic_data[3]['author'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $nonfic_data[3]['price'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $nonfic_data[3]['rating'];?></b></p>
                 </div>
               </div>
             </div><!--End of col-md-4-->
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="pictures\fiction\toaoi.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src="pictures\fiction\">
+                <img class="card-img-top" data-src="pictures\fiction\toaoi.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src=<?php echo $nonfic_data[4]['book_image']?>>
                 <div class="card-body">
-                  <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                  <p class="card-text" style="text-align:left;"><b>Title:<?php echo $nonfic_data[4]['title'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Author:<?php echo $nonfic_data[4]['author'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $nonfic_data[4]['price'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $nonfic_data[4]['rating'];?></b></p>
                 </div>
               </div>
             </div><!--End of col-md-4-->
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="pictures\fiction\tlkoe.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src="pictures\fiction\">
+                <img class="card-img-top" data-src="pictures\fiction\tlkoe.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src=<?php echo $nonfic_data[5]['book_image']?>>
                 <div class="card-body">
-                  <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                  <p class="card-text" style="text-align:left;"><b>Title:<?php echo $nonfic_data[5]['title'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Author:<?php echo $nonfic_data[5]['author'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $nonfic_data[5]['price'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $nonfic_data[5]['rating'];?></b></p>
                 </div>
               </div>
             </div><!--End of col-md-4-->
@@ -287,34 +383,34 @@
           <div class="row">
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="pictures\fiction\tkamb.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block" src="pictures\fiction\">
+                <img class="card-img-top" data-src="pictures\fiction\tkamb.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block" src=<?php echo $nonfic_data[6]['book_image']?>>
                 <div class="card-body">
-                  <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                  <p class="card-text" style="text-align:left;"><b>Title:<?php echo $nonfic_data[6]['title'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Author:<?php echo $nonfic_data[6]['author'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $nonfic_data[6]['price'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $nonfic_data[6]['rating'];?></b></p>
                 </div>
               </div>
             </div><!--End of col-md-4-->
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="pictures\fiction\toaoi.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src="pictures\fiction\">
+                <img class="card-img-top" data-src="pictures\fiction\toaoi.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src=<?php echo $nonfic_data[7]['book_image']?>>
                 <div class="card-body">
-                  <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                  <p class="card-text" style="text-align:left;"><b>Title:<?php echo $nonfic_data[7]['title'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Author:<?php echo $nonfic_data[7]['author'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $nonfic_data[7]['price'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $nonfic_data[7]['rating'];?></b></p>
                 </div>
               </div>
             </div><!--End of col-md-4-->
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="pictures\fiction\tlkoe.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src="pictures\fiction\">
+                <img class="card-img-top" data-src="pictures\fiction\tlkoe.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src=<?php echo $nonfic_data[8]['book_image']?>>
                 <div class="card-body">
-                  <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                  <p class="card-text" style="text-align:left;"><b>Title:<?php echo $nonfic_data[8]['title'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Author:<?php echo $nonfic_data[8]['author'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $nonfic_data[8]['price'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $nonfic_data[8]['rating'];?></b></p>
                 </div>
               </div>
             </div><!--End of col-md-4-->
@@ -350,34 +446,34 @@
           <div class="row">
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="pictures\fiction\tkamb.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block" src="pictures\fiction\">
+                <img class="card-img-top" data-src="pictures\fiction\tkamb.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block" src=<?php echo $syfy_data[0]['book_image']?>>
                 <div class="card-body">
-                  <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                  <p class="card-text" style="text-align:left;"><b>Title:<?php echo $syfy_data[0]['title'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Author:<?php echo $syfy_data[0]['author'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $syfy_data[0]['price'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $syfy_data[0]['rating'];?></b></p>
                 </div>
               </div>
             </div><!--End of col-md-4-->
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="pictures\fiction\toaoi.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src="pictures\fiction\">
+                <img class="card-img-top" data-src="pictures\fiction\toaoi.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src=<?php echo $syfy_data[1]['book_image']?>>
                 <div class="card-body">
-                  <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                  <p class="card-text" style="text-align:left;"><b>Title:<?php echo $syfy_data[1]['title'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Author:<?php echo $syfy_data[1]['author'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $syfy_data[1]['price'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $syfy_data[1]['rating'];?></b></p>
                 </div>
               </div>
             </div><!--End of col-md-4-->
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="pictures\fiction\tlkoe.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src="pictures\fiction\">
+                <img class="card-img-top" data-src="pictures\fiction\tlkoe.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src=<?php echo $syfy_data[2]['book_image']?>>
                 <div class="card-body">
-                  <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                  <p class="card-text" style="text-align:left;"><b>Title:<?php echo $syfy_data[2]['title'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Author:<?php echo $syfy_data[2]['author'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $syfy_data[2]['price'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $syfy_data[2]['rating'];?></b></p>
                 </div>
               </div>
             </div><!--End of col-md-4-->
@@ -391,34 +487,34 @@
           <div class="row">
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="pictures\fiction\tkamb.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block" src="pictures\fiction\">
+                <img class="card-img-top" data-src="pictures\fiction\tkamb.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block" src=<?php echo $syfy_data[3]['book_image']?>>
                 <div class="card-body">
-                  <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                  <p class="card-text" style="text-align:left;"><b>Title:<?php echo $syfy_data[3]['title'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Author:<?php echo $syfy_data[3]['author'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $syfy_data[3]['price'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $syfy_data[3]['rating'];?></b></p>
                 </div>
               </div>
             </div><!--End of col-md-4-->
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="pictures\fiction\toaoi.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src="pictures\fiction\">
+                <img class="card-img-top" data-src="pictures\fiction\toaoi.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src=<?php echo $syfy_data[4]['book_image']?>>
                 <div class="card-body">
-                  <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                  <p class="card-text" style="text-align:left;"><b>Title:<?php echo $syfy_data[4]['title'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Author:<?php echo $syfy_data[4]['author'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $syfy_data[4]['price'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $syfy_data[4]['rating'];?></b></p>
                 </div>
               </div>
             </div><!--End of col-md-4-->
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="pictures\fiction\tlkoe.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src="pictures\fiction\">
+                <img class="card-img-top" data-src="pictures\fiction\tlkoe.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src=<?php echo $syfy_data[5]['book_image']?>>
                 <div class="card-body">
-                  <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                  <p class="card-text" style="text-align:left;"><b>Title:<?php echo $syfy_data[5]['title'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Author:<?php echo $syfy_data[5]['author'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $syfy_data[5]['price'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $syfy_data[5]['rating'];?></b></p>
                 </div>
               </div>
             </div><!--End of col-md-4-->
@@ -432,34 +528,34 @@
           <div class="row">
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="pictures\fiction\tkamb.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block" src="pictures\fiction\">
+                <img class="card-img-top" data-src="pictures\fiction\tkamb.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block" src=<?php echo $syfy_data[6]['book_image']?>>
                 <div class="card-body">
-                  <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                  <p class="card-text" style="text-align:left;"><b>Title:<?php echo $syfy_data[6]['title'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Author:<?php echo $syfy_data[6]['author'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $syfy_data[6]['price'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $syfy_data[6]['rating'];?></b></p>
                 </div>
               </div>
             </div><!--End of col-md-4-->
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="pictures\fiction\toaoi.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src="pictures\fiction\">
+                <img class="card-img-top" data-src="pictures\fiction\toaoi.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src=<?php echo $syfy_data[7]['book_image']?>>
                 <div class="card-body">
-                  <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                  <p class="card-text" style="text-align:left;"><b>Title:<?php echo $syfy_data[7]['title'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Author:<?php echo $syfy_data[7]['author'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $syfy_data[7]['price'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $syfy_data[7]['rating'];?></b></p>
                 </div>
               </div>
             </div><!--End of col-md-4-->
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="pictures\fiction\tlkoe.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src="pictures\fiction\">
+                <img class="card-img-top" data-src="pictures\fiction\tlkoe.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src=<?php echo $syfy_data[8]['book_image']?>>
                 <div class="card-body">
-                  <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                  <p class="card-text" style="text-align:left;"><b>Title:<?php echo $syfy_data[8]['title'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Author:<?php echo $syfy_data[8]['author'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $syfy_data[8]['price'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $syfy_data[8]['rating'];?></b></p>
                 </div>
               </div>
             </div><!--End of col-md-4-->
@@ -495,34 +591,34 @@
           <div class="row">
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="pictures\fiction\tkamb.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block" src="pictures\fiction\">
+                <img class="card-img-top" data-src="pictures\fiction\tkamb.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block" src=<?php echo $bio_data[0]['book_image']?>>
                 <div class="card-body">
-                  <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                  <p class="card-text" style="text-align:left;"><b>Title:<?php echo $bio_data[0]['title'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Author:<?php echo $bio_data[0]['author'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $bio_data[0]['price'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $bio_data[0]['rating'];?></b></p>
                 </div>
               </div>
             </div><!--End of col-md-4-->
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="pictures\fiction\toaoi.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src="pictures\fiction\">
+                <img class="card-img-top" data-src="pictures\fiction\toaoi.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src=<?php echo $bio_data[1]['book_image']?>>
                 <div class="card-body">
-                  <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                  <p class="card-text" style="text-align:left;"><b>Title:<?php echo $bio_data[1]['title'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Author:<?php echo $bio_data[1]['author'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $bio_data[1]['price'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $bio_data[1]['rating'];?></b></p>
                 </div>
               </div>
             </div><!--End of col-md-4-->
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="pictures\fiction\tlkoe.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src="pictures\fiction\">
+                <img class="card-img-top" data-src="pictures\fiction\tlkoe.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src=<?php echo $bio_data[2]['book_image']?>>
                 <div class="card-body">
-                  <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                  <p class="card-text" style="text-align:left;"><b>Title:<?php echo $bio_data[2]['title'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Author:<?php echo $bio_data[2]['author'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $bio_data[2]['price'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $bio_data[2]['rating'];?></b></p>
                 </div>
               </div>
             </div><!--End of col-md-4-->
@@ -536,34 +632,34 @@
           <div class="row">
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="pictures\fiction\tkamb.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block" src="pictures\fiction\">
+                <img class="card-img-top" data-src="pictures\fiction\tkamb.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block" src=<?php echo $bio_data[3]['book_image']?>>
                 <div class="card-body">
-                  <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                  <p class="card-text" style="text-align:left;"><b>Title:<?php echo $bio_data[3]['title'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Author:<?php echo $bio_data[3]['author'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $bio_data[3]['price'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $bio_data[3]['rating'];?></b></p>
                 </div>
               </div>
             </div><!--End of col-md-4-->
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="pictures\fiction\toaoi.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src="pictures\fiction\">
+                <img class="card-img-top" data-src="pictures\fiction\toaoi.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src=<?php echo $bio_data[4]['book_image']?>>
                 <div class="card-body">
-                  <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                  <p class="card-text" style="text-align:left;"><b>Title:<?php echo $bio_data[4]['title'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Author:<?php echo $bio_data[4]['author'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $bio_data[4]['price'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $bio_data[4]['rating'];?></b></p>
                 </div>
               </div>
             </div><!--End of col-md-4-->
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="pictures\fiction\tlkoe.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src="pictures\fiction\">
+                <img class="card-img-top" data-src="pictures\fiction\tlkoe.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src=<?php echo $bio_data[5]['book_image']?>>
                 <div class="card-body">
-                  <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                  <p class="card-text" style="text-align:left;"><b>Title:<?php echo $bio_data[5]['title'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Author:<?php echo $bio_data[5]['author'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $bio_data[5]['price'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $bio_data[5]['rating'];?></b></p>
                 </div>
               </div>
             </div><!--End of col-md-4-->
@@ -577,34 +673,34 @@
           <div class="row">
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="pictures\fiction\tkamb.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block" src="pictures\fiction\">
+                <img class="card-img-top" data-src="pictures\fiction\tkamb.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block" src=<?php echo $bio_data[6]['book_image']?>>
                 <div class="card-body">
-                  <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                  <p class="card-text" style="text-align:left;"><b>Title:<?php echo $bio_data[6]['title'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Author:<?php echo $bio_data[6]['author'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $bio_data[6]['price'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $bio_data[6]['rating'];?></b></p>
                 </div>
               </div>
             </div><!--End of col-md-4-->
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="pictures\fiction\toaoi.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src="pictures\fiction\">
+                <img class="card-img-top" data-src="pictures\fiction\toaoi.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src=<?php echo $bio_data[7]['book_image']?>>
                 <div class="card-body">
-                  <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                  <p class="card-text" style="text-align:left;"><b>Title:<?php echo $bio_data[7]['title'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Author:<?php echo $bio_data[7]['author'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $bio_data[7]['price'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $bio_data[7]['rating'];?></b></p>
                 </div>
               </div>
             </div><!--End of col-md-4-->
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="pictures\fiction\tlkoe.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src="pictures\fiction\">
+                <img class="card-img-top" data-src="pictures\fiction\tlkoe.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src=<?php echo $bio_data[8]['book_image']?>>
                 <div class="card-body">
-                  <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                  <p class="card-text" style="text-align:left;"><b>Title:<?php echo $bio_data[8]['title'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Author:<?php echo $bio_data[8]['author'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $bio_data[8]['price'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $bio_data[8]['rating'];?></b></p>
                 </div>
               </div>
             </div><!--End of col-md-4-->
@@ -640,34 +736,34 @@
           <div class="row">
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="pictures\fiction\tkamb.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block" src="pictures\fiction\">
+                <img class="card-img-top" data-src="pictures\fiction\tkamb.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block" src=<?php echo $myst_data[0]['book_image']?>>
                 <div class="card-body">
-                  <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                  <p class="card-text" style="text-align:left;"><b>Title:<?php echo $myst_data[0]['title'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Author:<?php echo $myst_data[0]['author'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $myst_data[0]['price'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $myst_data[0]['rating'];?></b></p>
                 </div>
               </div>
             </div><!--End of col-md-4-->
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="pictures\fiction\toaoi.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src="pictures\fiction\">
+                <img class="card-img-top" data-src="pictures\fiction\toaoi.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src=<?php echo $myst_data[1]['book_image']?>>
                 <div class="card-body">
-                  <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                  <p class="card-text" style="text-align:left;"><b>Title:<?php echo $myst_data[1]['title'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Author:<?php echo $myst_data[1]['author'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $myst_data[1]['price'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $myst_data[1]['rating'];?></b></p>
                 </div>
               </div>
             </div><!--End of col-md-4-->
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="pictures\fiction\tlkoe.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src="pictures\fiction\">
+                <img class="card-img-top" data-src="pictures\fiction\tlkoe.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src=<?php echo $myst_data[2]['book_image']?>>
                 <div class="card-body">
-                  <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                  <p class="card-text" style="text-align:left;"><b>Title:<?php echo $myst_data[2]['title'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Author:<?php echo $myst_data[2]['author'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $myst_data[2]['price'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $myst_data[2]['rating'];?></b></p>
                 </div>
               </div>
             </div><!--End of col-md-4-->
@@ -681,34 +777,34 @@
           <div class="row">
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="pictures\fiction\tkamb.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block" src="pictures\fiction\">
+                <img class="card-img-top" data-src="pictures\fiction\tkamb.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block" src=<?php echo $myst_data[3]['book_image']?>>
                 <div class="card-body">
-                  <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                  <p class="card-text" style="text-align:left;"><b>Title:<?php echo $myst_data[3]['title'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Author:<?php echo $myst_data[3]['author'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $myst_data[3]['price'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $myst_data[3]['rating'];?></b></p>
                 </div>
               </div>
             </div><!--End of col-md-4-->
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="pictures\fiction\toaoi.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src="pictures\fiction\">
+                <img class="card-img-top" data-src="pictures\fiction\toaoi.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src=<?php echo $myst_data[4]['book_image']?>>
                 <div class="card-body">
-                  <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                  <p class="card-text" style="text-align:left;"><b>Title:<?php echo $myst_data[4]['title'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Author:<?php echo $myst_data[4]['author'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $myst_data[4]['price'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $myst_data[4]['rating'];?></b></p>
                 </div>
               </div>
             </div><!--End of col-md-4-->
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="pictures\fiction\tlkoe.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src="pictures\fiction\">
+                <img class="card-img-top" data-src="pictures\fiction\tlkoe.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src=<?php echo $myst_data[5]['book_image']?>>
                 <div class="card-body">
-                  <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                  <p class="card-text" style="text-align:left;"><b>Title:<?php echo $myst_data[5]['title'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Author:<?php echo $myst_data[5]['author'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $myst_data[5]['price'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $myst_data[5]['rating'];?></b></p>
                 </div>
               </div>
             </div><!--End of col-md-4-->
@@ -722,34 +818,34 @@
           <div class="row">
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="pictures\fiction\tkamb.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block" src="pictures\fiction\">
+                <img class="card-img-top" data-src="pictures\fiction\tkamb.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block" src=<?php echo $myst_data[6]['book_image']?>>
                 <div class="card-body">
-                  <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                  <p class="card-text" style="text-align:left;"><b>Title:<?php echo $myst_data[6]['title'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Author:<?php echo $myst_data[6]['author'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $myst_data[6]['price'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $myst_data[6]['rating'];?></b></p>
                 </div>
               </div>
             </div><!--End of col-md-4-->
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="pictures\fiction\toaoi.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src="pictures\fiction\">
+                <img class="card-img-top" data-src="pictures\fiction\toaoi.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src=<?php echo $myst_data[7]['book_image']?>>
                 <div class="card-body">
-                  <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                  <p class="card-text" style="text-align:left;"><b>Title:<?php echo $myst_data[7]['title'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Author:<?php echo $myst_data[7]['author'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $myst_data[7]['price'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $myst_data[7]['rating'];?></b></p>
                 </div>
               </div>
             </div><!--End of col-md-4-->
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="pictures\fiction\tlkoe.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src="pictures\fiction\">
+                <img class="card-img-top" data-src="pictures\fiction\tlkoe.jpg" style="margin-left: auto; margin-right: auto; height: 225px; width: 80%; display: block;" src=<?php echo $myst_data[8]['book_image']?>>
                 <div class="card-body">
-                  <p class="card-text" style="text-align:left;"><b>Title:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Author:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Price:</b></p>
-                  <p class="card-text" style="text-align:left;"><b>Rating:</b></p>
+                  <p class="card-text" style="text-align:left;"><b>Title:<?php echo $myst_data[8]['title'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Author:<?php echo $myst_data[8]['author'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Price: $<?php echo $myst_data[8]['price'];?></b></p>
+                  <p class="card-text" style="text-align:left;"><b>Rating:<?php echo $myst_data[8]['rating'];?></b></p>
                 </div>
               </div>
             </div><!--End of col-md-4-->
